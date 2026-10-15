@@ -23,4 +23,26 @@ class Tree {
         this.root = this.buildTree(arr);
     };
 
+    // #1
+    buildTree(array) {
+        array.sort((a, b) => a - b);
+        const duplicateRemover = [...new Set(array)];
+        return this.buildTreeBalanced(duplicateRemover);
+    };
+
+    buildTreeBalanced(array) {
+        if (array.length === 0) return null;
+
+        const mid = Math.floor(array.length / 2);
+        const newNode = new Node(array[mid]);
+
+        newNode.left = this.buildTreeBalanced(array.slice(0, mid));
+        newNode.right = this.buildTreeBalanced(array.slice(mid + 1));
+
+        return newNode;
+    };
+
 };
+
+
+export { Node, Tree };
