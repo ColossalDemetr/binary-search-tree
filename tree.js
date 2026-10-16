@@ -42,6 +42,21 @@ class Tree {
         return newNode;
     };
 
+
+    includes(value) {
+        let current = this.root;
+
+        while(current !== null) {
+            if (current.data === value) {
+                return true;
+            }
+
+            if (value < current.data) {current = current.left} else {current = current.right};
+        };
+
+        return false;
+    };
+
 };
 
 

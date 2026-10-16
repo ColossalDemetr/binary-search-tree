@@ -15,3 +15,4 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 }
 
 console.log(prettyPrint(tree.root));
+console.log(tree.includes(8));
