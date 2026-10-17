@@ -57,6 +57,26 @@ class Tree {
         return false;
     };
 
+    insert(value) {
+        let current = this.root;
+        let parent = null;
+
+        while(current !== null) {
+            if (current.data === value) {
+                return;
+            };
+
+            if (value < current.data) {parent = current; current = current.left;} else {parent = current; current = current.right;};
+        };
+
+        let newNode = new Node(value);
+
+        value < parent.data ? parent.left = newNode : parent.right = newNode;
+        
+        
+
+    };
+
 };
 
 

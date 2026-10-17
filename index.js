@@ -14,5 +14,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? '    ' : '│   '}`, true);
 }
 
+
+console.log(tree.insert(21));
 console.log(prettyPrint(tree.root));
-console.log(tree.includes(8));
