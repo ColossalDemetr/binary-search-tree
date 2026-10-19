@@ -15,5 +15,6 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 }
 
 
-console.log(tree.deleteItem(67));
-console.log(prettyPrint(tree.root));
+console.log(tree.levelOrderForEach((value => console.log(value))));
+console.log(tree.levelOrderForEachRecursive([tree.root], (value) => console.log(value)));
+// console.log(prettyPrint(tree.root));

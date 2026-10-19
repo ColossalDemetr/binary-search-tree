@@ -111,11 +111,44 @@ class Tree {
         }
         
         return node;
-    }
+    };
 
     deleteItem(value) {
         this.root = this.deleteNode(this.root, value);
-    }
+    };
+
+    levelOrderForEach(callback) {
+
+        let current = this.root;
+        if (!callback) throw new Error("Callback is required!");
+        if (current === null) return;
+
+        const queue = [current];
+
+        while (queue.length > 0) {
+            const node = queue.shift();
+            callback(node.data);
+            if (node.left !== null) queue.push(node.left);
+            if (node.right !== null) queue.push(node.right);
+        };
+
+    };
+
+    // Same but recursive
+    levelOrderForEachRecursive(queue, callback) {
+        if (!callback) throw new Error("Callback is required!");
+        if (queue.length === 0) return;
+        
+            const node = queue.shift();
+            callback(node.data);
+            if (node.left !== null) queue.push(node.left);
+            if (node.right !== null) queue.push(node.right);
+
+
+        this.levelOrderForEachRecursive(queue, callback);
+
+        
+    };
 
 };
 
