@@ -189,7 +189,23 @@ class Tree {
         traverse(current);        
     };
 
+    postOrderForEach(callback) {
+        let current = this.root;
 
+        if (!callback) throw new Error('Callback is required!');
+        if (current === null) return;
+
+        function traverse(node) {
+            if (node === null) return;
+
+            traverse(node.left);
+            traverse(node.right);
+            callback(node.data);
+
+        };
+
+        traverse(current);  
+    };
 };
 
 
