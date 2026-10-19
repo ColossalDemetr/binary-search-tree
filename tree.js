@@ -66,16 +66,56 @@ class Tree {
                 return;
             };
 
-            if (value < current.data) {parent = current; current = current.left;} else {parent = current; current = current.right;};
+            if (value < current.data) {
+                parent = current; 
+                current = current.left; 
+            } else {
+                parent = current; 
+                current = current.right;
+            };
         };
 
         let newNode = new Node(value);
 
         value < parent.data ? parent.left = newNode : parent.right = newNode;
         
-        
+    };
+
+    // Additional methods for deleteItem();
+    findMin(node) {
+        let current = node;
+        while (current !== null) {
+            if (current.left === null) return current;
+            current = current.left;
+        };
+
+        return current;
 
     };
+
+    deleteNode(node, value) {
+        if (node === null) return null;
+        
+        if (value < node.data) {
+            node.left = this.deleteNode(node.left, value)
+        } else if (value > node.data) {
+            node.right = this.deleteNode(node.right, value)
+        } else {
+            if (node.left === null) return node.right;
+            else if (node.right === null) return node.left;
+            else {
+                const successorValue = this.findMin(node.right).data;
+                node.data = successorValue;
+                node.right = this.deleteNode(node.right, successorValue);
+            };
+        }
+        
+        return node;
+    }
+
+    deleteItem(value) {
+        this.root = this.deleteNode(this.root, value);
+    }
 
 };
 
