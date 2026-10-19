@@ -147,7 +147,46 @@ class Tree {
 
         this.levelOrderForEachRecursive(queue, callback);
 
-        
+
+    };
+
+    inOrderForEach(callback) {
+        let current = this.root;
+
+        if (!callback) throw new Error('Callback is required!');
+        if (current === null) return;
+
+        function traverse(node) {
+            if (node === null) return;
+
+
+            traverse(node.left);
+            callback(node.data);
+            traverse(node.right);
+
+        };
+
+        traverse(current);
+
+    };
+
+    preOrdeForEach(callback) {
+        let current = this.root;
+
+        if (!callback) throw new Error('Callback is required!');
+        if (current === null) return;
+
+        function traverse(node) {
+            if (node === null) return;
+
+
+            traverse(node.left);
+            callback(node.data);
+            traverse(node.right);
+
+        };
+
+        traverse(current);        
     };
 
 };
