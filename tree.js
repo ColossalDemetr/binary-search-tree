@@ -170,7 +170,7 @@ class Tree {
 
     };
 
-    preOrdeForEach(callback) {
+    preOrderForEach(callback) {
         let current = this.root;
 
         if (!callback) throw new Error('Callback is required!');
@@ -180,14 +180,15 @@ class Tree {
             if (node === null) return;
 
 
-            traverse(node.left);
             callback(node.data);
+            traverse(node.left);
             traverse(node.right);
 
         };
 
         traverse(current);        
     };
+
 
 };
 
