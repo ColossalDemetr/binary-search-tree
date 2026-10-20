@@ -263,6 +263,12 @@ class Tree {
         return this.checkBalanced(this.root);
     };
 
+    rebalance() {
+        const arr = [];
+        this.inOrderForEach(value => arr.push(value));
+        this.root = this.buildTree(arr);
+    };
+
 };
 
 
