@@ -206,6 +206,28 @@ class Tree {
 
         traverse(current);  
     };
+
+    // Helpers for height(value)
+
+    getHeight(node) {
+        if (node === null) return -1;
+
+        return 1 + Math.max(this.getHeight(node.left), this.getHeight(node.right));
+    };
+
+    // 
+    height(value) {
+        let current = this.root;
+        if (!this.includes(value)) return undefined;
+
+       while (current !== null) {
+            if (current.data === value) return this.getHeight(current);
+
+            if (value < current.data) current = current.left;
+            else current = current.right;
+       };
+
+    };
 };
 
 

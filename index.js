@@ -15,5 +15,5 @@ const prettyPrint = (node, prefix = '', isLeft = true) => {
 }
 
 
-console.log(tree.postOrderForEach(value => console.log(value)));
+console.log(tree.height(8));
 // console.log(prettyPrint(tree.root));
