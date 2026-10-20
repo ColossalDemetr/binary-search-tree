@@ -228,6 +228,25 @@ class Tree {
        };
 
     };
+
+    depth(value) {
+        let current = this.root;
+        let counter = 0;
+        if(!this.includes(value) || current.data === null) return undefined;
+
+        while (current.data !== value) {
+
+            if (value < current.data) {
+                current = current.left;
+                counter++;
+            } else {
+                current = current.right;
+                counter++;
+            };
+        };
+
+        return counter;
+    };
 };
 
 
